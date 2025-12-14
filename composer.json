@@ -2,6 +2,9 @@
     "name": "juandelatorre/devwebcamp",
     "description": "Proyecto PHP 8, MVC, SQL, BEM, SASS",
     "type": "project",
+    "require": {
+    "vlucas/phpdotenv": "^5.6"
+    },
     "autoload": {
         "psr-4": {
             "MVC\\" : "./",
