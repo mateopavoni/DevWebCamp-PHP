@@ -56,7 +56,7 @@ class AuthController {
             $_SESSION = [];
             header('Location: /');
         }
-       
+    
     }
 
     public static function registro(Router $router) {
