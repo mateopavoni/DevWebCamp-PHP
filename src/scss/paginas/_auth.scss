@@ -2,7 +2,5 @@
 @use "base/variables" as v;
 
 .auth{
-    @include m.contenedor;
-    &__heading{
-    }
+    @include m.contenedor-sm;
 }
