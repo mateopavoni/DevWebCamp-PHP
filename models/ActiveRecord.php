@@ -18,7 +18,9 @@ class ActiveRecord {
     }
 
     public static function getAlertas() {
-        return static::$alertas;
+        $alertas = static::$alertas;
+        static::$alertas = [];
+        return $alertas;
     }
 
     public function validar() {
