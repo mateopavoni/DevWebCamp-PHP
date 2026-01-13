@@ -159,7 +159,7 @@ class AuthController {
 
         $token_valido = true;
 
-        if(!$token) header('Location: /');
+        if(!$token) header('Location: /login');
 
         // Identificar el usuario con este token
         $usuario = Usuario::where('token', $token);

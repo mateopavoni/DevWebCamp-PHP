@@ -76,7 +76,7 @@ class Email {
                 <p><strong>Hola {$this->nombre}</strong>, has solicitado reestablecer tu password.</p>
                 <p>
                     Presiona aquí:
-                    <a href='{$_ENV['HOST']}/recuperar?token={$this->token}'>
+                    <a href='{$_ENV['HOST']}/reestablecer?token={$this->token}'>
                         Reestablecer Password
                     </a>
                 </p>
