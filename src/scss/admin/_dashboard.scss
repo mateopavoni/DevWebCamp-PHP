@@ -71,7 +71,8 @@
         flex-direction: column;
         align-items: center;
         transition: all .3s ease;
-        &:hover{
+        &:hover,
+        &--activo{
             background-color: lighten(v.$gris-oscuro, 20%);
             color: v.$blanco;
         }
