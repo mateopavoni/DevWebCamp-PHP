@@ -10,4 +10,14 @@ class PonentesController {
             'titulo' => "Ponentes / Conferencistas"
         ]);
     }
+
+    public static function crear(Router $router) {
+
+
+
+        $router->render('admin/Ponentes/crear', [
+            'titulo' => "Registrar Ponente / Conferencista"
+        ]);
+    }
+
 }
