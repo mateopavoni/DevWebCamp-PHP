@@ -38,4 +38,36 @@
         </select>
     </div>    
 
+    <div class="formulario__campo">
+        <label for="categoria" class="formulario__label">Selecciona el día</label>
+
+        <div class="formulario__radio">
+            <?php foreach($dias as $dia) { ?>
+                <div>
+                    <label for="<?php echo strtolower($dia->nombre); ?>"><?php echo $dia->nombre; ?></label>
+                    <input
+                        type="radio"
+                        id="<?php echo strtolower($dia->nombre); ?>"
+                        name="dia"
+                        value="<?php echo $dia->id; ?>"
+                        <?php echo ($evento->dia_id === $dia->id) ? 'checked' : ''; ?>
+                    />
+                </div>
+            <?php } ?>
+        </div>
+
+        <input type="hidden" name="dia_id" value="<?php echo $evento->dia_id; ?>">
+    </div>
+
+    <div id="horas" class="formulario__campo">
+        <label class="formulario__label">Seleccionar Hora</label>
+
+        <ul id="horas" class="horas">
+            <?php foreach($horas as $hora) { ?>
+                <li data-hora-id="<?php echo $hora->id; ?>" class="horas__hora horas__hora--deshabilitada"><?php echo $hora->hora; ?></li>
+            <?php } ?>
+        </ul>
+
+        <input type="hidden" name="hora_id" value="<?php echo $evento->hora_id; ?>">
+    </div>
 </fieldset>
