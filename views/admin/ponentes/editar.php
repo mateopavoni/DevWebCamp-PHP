@@ -8,13 +8,11 @@
 </div>
 
 <div class="dashboard__formulario">
-    <?php 
-        include_once __DIR__ . './../../templates/alertas.php';
-    ?>
+    <?php include_once dirname(__DIR__, 2) . '/templates/alertas.php'; ?>
 
-    <form method="POST" action="/admin/ponentes/crear" enctype="multipart/form-data" class="formulario">
+    <form method="POST" enctype="multipart/form-data" class="formulario">
         <?php include_once __DIR__ . '/formulario.php'; ?>
 
-        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Registrar Ponente">
+        <input class="formulario__submit formulario__submit--registrar" type="submit" value="Actualizar Ponente">
     </form>
 </div>
