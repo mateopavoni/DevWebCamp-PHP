@@ -65,10 +65,17 @@ class ActiveRecord {
         $sanitizado = [];
 
         foreach ($atributos as $key => $value) {
+
+            if (is_array($value)) {
+                $value = json_encode($value, JSON_UNESCAPED_UNICODE);
+            }
+
             $sanitizado[$key] = self::$db->escape_string($value);
         }
+
         return $sanitizado;
     }
+
 
     public function sincronizar($args = []) {
         foreach ($args as $key => $value) {
