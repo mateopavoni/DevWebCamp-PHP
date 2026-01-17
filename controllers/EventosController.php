@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Model\Categoria;
 use Model\Dia;
+use Model\Hora;
 use MVC\Router;
 
 class EventosController {
@@ -20,11 +21,14 @@ class EventosController {
 
         $dias = Dia::all("ASC");
 
+        $horas = Hora::all("ASC");
+
         $router->render("admin/eventos/crear", [
             'titulo' => "Registrar Evento",
             'alertas' => $alertas,
             "categorias" => $categorias,
-            "dias" => $dias
+            "dias" => $dias,
+            "horas" => $horas
         ]); 
     }
 }
