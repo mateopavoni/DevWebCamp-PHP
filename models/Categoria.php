@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Model;
 
@@ -8,11 +8,4 @@ class Categoria extends ActiveRecord {
 
     public $id;
     public $nombre;
-
-    public function __construct($args = [])
-    {
-        $this->id = $args['id'] ?? null;
-        $this->nombre = $args['nombre'] ?? '';
-    }
 }
-
