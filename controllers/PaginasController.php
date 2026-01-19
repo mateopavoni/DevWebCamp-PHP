@@ -46,21 +46,22 @@ class PaginasController {
             $evento->hora = Hora::find($evento->hora_id);
             $evento->ponente = Ponente::find($evento->ponente_id);
 
-            if($evento->dia_id === 1 && $evento->categoria_id === 1) {
+            if((int)$evento->dia_id === 1 && (int)$evento->categoria_id === 1) {
                 $eventos_formateados['conferencias_v'][] = $evento;
             }
 
-            if($evento->dia_id === 2 && $evento->categoria_id === 1) {
+            if((int)$evento->dia_id === 2 && (int)$evento->categoria_id === 1) {
                 $eventos_formateados['conferencias_s'][] = $evento;
             }
 
-            if($evento->dia_id === 1 && $evento->categoria_id === 2) {
+            if((int)$evento->dia_id === 1 && (int)$evento->categoria_id === 2) {
                 $eventos_formateados['workshops_v'][] = $evento;
             }
 
-            if($evento->dia_id === 2 && $evento->categoria_id === 2) {
+            if((int)$evento->dia_id === 2 && (int)$evento->categoria_id === 2) {
                 $eventos_formateados['workshops_s'][] = $evento;
             }
+
         }
 
         $router->render('paginas/conferencias', [
