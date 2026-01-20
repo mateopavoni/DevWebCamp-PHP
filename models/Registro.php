@@ -14,8 +14,7 @@ class Registro extends ActiveRecord {
         'paquete_id',
         'pago_id',
         'token',
-        'usuario_id',
-        'regalo_id'
+        'usuario_id'
     ];
 
     // Columnas DB
@@ -24,7 +23,6 @@ class Registro extends ActiveRecord {
     public ?string $pago_id = null;
     public ?string $token = null;
     public ?int $usuario_id = null;
-    public ?int $regalo_id = 1;
 
     // Relaciones (NO DB)
     public ?Usuario $usuario = null;
@@ -37,6 +35,5 @@ class Registro extends ActiveRecord {
         $this->pago_id = $args['pago_id'] ?? null;
         $this->token = $args['token'] ?? null;
         $this->usuario_id = isset($args['usuario_id']) ? (int)$args['usuario_id'] : null;
-        $this->regalo_id = isset($args['regalo_id']) ? (int)$args['regalo_id'] : 1;
     }
 }
