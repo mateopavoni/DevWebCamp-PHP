@@ -13,6 +13,7 @@ class Regalo extends ActiveRecord {
 
     public ?int $id = null;
     public ?string $nombre = null;
+    public int $total = 0;
 
     public function __construct($args = [])
     {
