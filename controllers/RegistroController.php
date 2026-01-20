@@ -18,32 +18,34 @@ class RegistroController {
 
     public static function crear(Router $router) {
 
-        if(!is_auth()) {
+        if (!is_auth()) {
             header('Location: /');
             return;
         }
 
-        // Verificar si el usuario ya esta registrado
+        // Verificar si el usuario ya está registrado
         $registro = Registro::where('usuario_id', $_SESSION['id']);
 
-        if (
-            $registro &&
-            ($registro->paquete_id === 2 || $registro->paquete_id === 3)
-        ) {
-            header('Location: /boleto?id=' . urlencode($registro->token));
-            return;
-        }
+        if ($registro) {
 
+            // Pase presencial o virtual
+            if ($registro->paquete_id === 2 || $registro->paquete_id === 3) {
+                header('Location: /boleto?id=' . urlencode($registro->token));
+                return;
+            }
 
-        if(isset($registro) && $registro->paquete_id === "1") {
-            header('Location: /finalizar-registro/conferencias');
-            return;
+            // Pase gratis
+            if ($registro->paquete_id === 1) {
+                header('Location: /finalizar-registro/conferencias');
+                return;
+            }
         }
 
         $router->render('registro/crear', [
             'titulo' => 'Finalizar Registro'
         ]);
     }
+
 
     public static function gratis(Router $router) {
 
