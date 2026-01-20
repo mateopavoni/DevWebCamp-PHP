@@ -1,28 +1,42 @@
-<?php 
+<?php
 
 namespace Model;
+
+use Model\Usuario;
+use Model\Paquete;
 
 class Registro extends ActiveRecord {
 
     protected static $tabla = 'registros';
+
     protected static $columnasDB = [
-        'id', 'paquete_id', 'pago_id', 'token', 'usuario_id', 'regalo_id'
+        'id',
+        'paquete_id',
+        'pago_id',
+        'token',
+        'usuario_id',
+        'regalo_id'
     ];
 
+    // Columnas DB
     public ?int $id = null;
-    public int|string $paquete_id;
-    public int|string $pago_id;
-    public string $token;
-    public int|string $usuario_id;
-    public int $regalo_id;
+    public ?int $paquete_id = null;
+    public ?string $pago_id = null;
+    public ?string $token = null;
+    public ?int $usuario_id = null;
+    public ?int $regalo_id = 1;
+
+    // Relaciones (NO DB)
+    public ?Usuario $usuario = null;
+    public ?Paquete $paquete = null;
 
     public function __construct($args = [])
     {
-        $this->id = $args['id'] ?? null;
-        $this->paquete_id = $args['paquete_id'] ?? '';
-        $this->pago_id = $args['pago_id'] ?? '';
-        $this->token = $args['token'] ?? '';
-        $this->usuario_id = $args['usuario_id'] ?? '';
-        $this->regalo_id = $args['regalo_id'] ?? 1;
+        $this->id = isset($args['id']) ? (int)$args['id'] : null;
+        $this->paquete_id = isset($args['paquete_id']) ? (int)$args['paquete_id'] : null;
+        $this->pago_id = $args['pago_id'] ?? null;
+        $this->token = $args['token'] ?? null;
+        $this->usuario_id = isset($args['usuario_id']) ? (int)$args['usuario_id'] : null;
+        $this->regalo_id = isset($args['regalo_id']) ? (int)$args['regalo_id'] : 1;
     }
 }

@@ -49,13 +49,6 @@ class RegistroController {
                 return;
             }
 
-            // Verificar si el usuario ya esta registrado
-            $registro = Registro::where('usuario_id', $_SESSION['id']);
-            if(isset($registro) && $registro->paquete_id === "3") {
-                header('Location: /boleto?id=' . urlencode($registro->token));
-                return;
-            }
-
             $token = substr( md5(uniqid( rand(), true )), 0, 8);
             
             // Crear registro
@@ -75,5 +68,31 @@ class RegistroController {
             }
 
         }
+    }
+
+    public static function boleto(Router $router) {
+
+        // Validar la URL
+        $id = $_GET['id'];
+
+        if(!$id || !strlen($id) === 8 ) {
+            header('Location: /');
+            return;
+        }
+
+        // buscarlo en la BD
+        $registro = Registro::where('token', $id);
+        if(!$registro) {
+            header('Location: /');
+            return;
+        }
+        // Llenar las tablas de referencia
+        $registro->usuario = Usuario::find($registro->usuario_id);
+        $registro->paquete = Paquete::find($registro->paquete_id);
+
+        $router->render('registro/boleto', [
+            'titulo' => 'Asistencia a DevWebCamp',
+            'registro' => $registro
+        ]);
     }
 } 
